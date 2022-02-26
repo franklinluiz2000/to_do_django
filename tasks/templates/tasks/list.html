@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block title %}Task List{% endblock %} {% block content %}
+<div class="offset-1 col-10 list-div">
+    <!-- Pesquisar em font Awesome, icones para enriquecer de forma visual -->
+    <h1>Task List</h1>
+    <div class="col-2 add-div">
+        <!-- "fas fa-plus" é o ícone de '+' -->
+        <i class="fas fa-plus"></i> Add Task
+    </div>
+    <div class="col-9 search-div">
+        <input class="form-control" type="text" id="search" name="search" placeholder="Enter the task name to search...">
+        <i class="fas fa-search"></i>
+    </div>
+    <ul class="task-list">
+        {% for task in tasks %}
+        <li class="task-item">
+            <span><a href="/task/{{task.id}}">{{task.title}}</a></span>
+            <span><i class="fas fa-trash"></i></span>
+            <span><i class="fas fa-edit"></i></span>
+        </li>
+        {% endfor %}
+
+    </ul>
+</div>
+{% endblock %} © 2022 GitHub, Inc. Terms
