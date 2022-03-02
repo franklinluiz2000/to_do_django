@@ -1,24 +1,47 @@
-{% extends 'base.html' %} {% block title %}Task List{% endblock %} {% block content %}
+{% extends 'base.html' %} 
+{% block title %}To-do list{% endblock %} 
+{% block content %}
 <div class="offset-1 col-10 list-div">
-    <!-- Pesquisar em font Awesome, icones para enriquecer de forma visual -->
-    <h1>Task List</h1>
-    <div class="col-2 add-div">
-        <!-- "fas fa-plus" é o ícone de '+' -->
-        <i class="fas fa-plus"></i> Add Task
-    </div>
+    <h1>To-do list</h1>
+    <a id="add-link" href="newtask/">
+        <div class="col-2 add-div">
+            <i class="fas fa-plus"></i> Add Task
+        </div>
+    </a>
     <div class="col-9 search-div">
-        <input class="form-control" type="text" id="search" name="search" placeholder="Enter the task name to search...">
-        <i class="fas fa-search"></i>
+        <form method="GET" id="search-form">
+            <input class="form-control" type="text" id="search" name="search" placeholder="Enter the name of the task to be fetched..." value="{{ request.GET.search }}">
+            <i class="fas fa-search" id="search-btn"></i>
+        </form>
     </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %}
     <ul class="task-list">
         {% for task in tasks %}
         <li class="task-item">
             <span><a href="/task/{{task.id}}">{{task.title}}</a></span>
-            <span><i class="fas fa-trash"></i></span>
-            <span><i class="fas fa-edit"></i></span>
+            <a href="delete/{{task.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a>
+            <a href="edit/{{task.id}}"><span><i class="fas fa-edit"></i></span></a>
         </li>
         {% endfor %}
-
     </ul>
+    <div class="pagination">
+        <span class="step-links">
+            {% if tasks.has_previous %}
+                <a href="?page={{ tasks.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+            {% endif %}
+            
+            {% if tasks.paginator.num_pages %}
+            <span class="current">
+                {{ tasks.number }} de {{ tasks.paginator.num_pages }}
+            </span> {% endif %} {% if tasks.has_next %}
+        <a href="?page={{ tasks.next_page_number }}"><i class="fas fa-arrow-right"></i></a> {% endif %}
+        </span>
+    </div>
 </div>
-{% endblock %} © 2022 GitHub, Inc. Terms
+{% endblock %}
