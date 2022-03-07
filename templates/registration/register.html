@@ -1,14 +1,14 @@
-{% extends  'base.html' %}
+{% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-{% block title %}Enter{% endblock %}
+{% block title %}Registre-se para usar o To Do{% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="col-md-4 offset-md-4">
         <div class="card  auth-card">
             <div class="card-body">
-                <h4 class="card-title text-center">Enter To Do List</h4>
+                <h4 class="card-title text-center">Registre-se para usar o To Do</h4>
         
                 <form method="post">
                     {% csrf_token %}
@@ -16,11 +16,16 @@
         
                     {{ form|crispy }}
 
-                    <button type="submit" class="btn btn-primary btn-block">Enter</button>
+                    <button type="submit" class="btn btn-primary btn-block">Registrar</button>
                 </form>
-                <p class="change-form-p">Quer criar uma conta? <a href="/accounts/register">Clique aqui!</a></p>
+
+                <p class="change-form-p">Já possui uma conta? <a href="/accounts/login">Clique aqui!</a></p>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
+© 2022 GitHub, Inc.
+Terms
+Privacy
+S

@@ -1,5 +1,8 @@
 .container-fluid {
     padding: 0;
+}
+
+.container-fluid .row {
     margin: 0;
 }
 
@@ -21,6 +24,51 @@
 .navbar-light .navbar-nav a.nav-link {
     color: #333;
     letter-spacing: 1px;
+}
+
+/* dashboard */
+.dashboard {
+    padding: 0;
+    width: 100%;
+    display: block;
+}
+
+.dashboard h4 {
+    font-size: 20px;
+}
+
+.dashboard span {
+    font-size: 40px;
+    display: block;
+    width: 100%;
+}
+
+.dashboard-box {
+    float: left;
+    background-color: #DFDFDF;
+    color: #FFF;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 130px;
+    width: 32%;
+    text-align: center;
+}
+
+.dashboard-box:nth-child(2) {
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+
+#dashboard-lastdays {
+    background-color: #3476e2;
+}
+
+#dashboard-done {
+    background-color: #13c43f;
+}
+
+#dashboard-doing {
+    background-color: #db1e47;
 }
 
 /* Botão de adicionar */
@@ -62,6 +110,18 @@
     display: inline-block;
 }
 
+/* filter */
+.filter-div {
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+#filter {
+    display: inline-block;
+    width: 200px;
+    margin-left: 10px;
+}
+
 /* Lista de tarefas */
 
 .list-div {
@@ -76,9 +136,14 @@
     list-style: none;
     font-size: 20px;
     height: 50px;
+    padding: 0 15px;
     padding-top: 10px;
     border-bottom: 1px dashed #CCC;
 }
+
+.task-item.done {
+    background-color: #CCC;
+}  
 
 .fas.fa-trash {
     color: #db1e47;
@@ -94,6 +159,18 @@
     margin: 5px;
     font-size: 20px;
     float: right;
+}
+
+.fa-check {
+    color: #CCC;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 20px;
+    float: right;
+}
+
+.done .fa-check {
+    color: #3476e2;
 }
 
 /* Rodapé */
@@ -140,4 +217,9 @@ ul.messages li {
 
 .auth-card {
     margin-bottom: 30px;
+}
+
+.change-form-p {
+    margin-top: 30px;
+    text-align: center;
 }
